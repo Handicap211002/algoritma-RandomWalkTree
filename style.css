@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 15px;
+}
+canvas {
+  background-color: green;
+}
+img {
+  display: none;
+}
+button {
+  box-shadow: none;
+  border: 2px solid black;
+  font-weight: 600;
+  background-color: transparent;
+  padding: 10px;
+  margin: 10px;
+}
+button:hover {
+  cursor: pointer;
+}
