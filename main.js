@@ -114,7 +114,7 @@ class Node {
     context.fill();
   }
 
-  drawInsideRect(insideColor = "green") {
+  drawInsideRect(insideColor = "yellow") {
     context.fillStyle = insideColor;
     context.beginPath();
     context.moveTo(this.topLeft[0], this.topLeft[1]);
@@ -239,13 +239,13 @@ class Node {
   }
 }
 
-class RandomWalkTree {
+class BSPTree {
   constructor(rootNode) {
     this.root = rootNode;
   }
 
   expandRoot() {
-    console.log("Random Walk Tree Structure : ");
+    console.log("BSP Tree Structure : ");
     const splitQueue = [this.root];
 
     while (splitQueue.length) {
@@ -320,18 +320,25 @@ const canvas = document.getElementById("myCanvas");
 const context = canvas.getContext("2d");
 canvas.width = 1200;
 canvas.height = 1200;
-const MIN_SIZE = 70; 
+const MIN_SIZE = 70; // min size of rect is 70 x 70 px
 
 function createMap() {
   const root = new Node(0, 0, 1200, 1200, 0);
   root.drawRect();
+  root.drawIntersection();
 
-  const tree = new RandomWalkTree(root);
+  const tree = new BSPTree(root);
   tree.expandRoot();
   const treeLeaves = tree.getLeaves();
+  console.log("tree leaves : ");
+  console.log(treeLeaves);
 
   for (const leaf of treeLeaves) {
     leaf.drawRect();
+  }
+
+  for (const leaf of treeLeaves) {
+    leaf.drawIntersection();
   }
 
   for (const leaf of treeLeaves) {
